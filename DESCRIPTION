@@ -5,7 +5,10 @@ Version: 0.1
 Date: 2014-02-25
 Author: Wush Wu <wush978@gmail.com>
 Maintainer: Wush Wu <wush978@gmail.com>
-Description: For the benchmark, please see https://github.com/wush978/FastROC
+Description: This package computes receiver operating characteristic (ROC)
+    curve and area under curve (AUC) faster than existed package such
+    as caTools, pROC and ROCR. For the benchmark, please see
+    https://github.com/wush978/FastROC
 License: GPL(>= 3)
 BugReports: https://github.com/wush978/FastROC/issues
 Depends:
