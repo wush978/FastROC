@@ -1,0 +1,3 @@
+export(AUC)
+export(ROC)
+useDynLib(FastROC)
