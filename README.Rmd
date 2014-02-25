@@ -1,0 +1,42 @@
+FastROC
+=======
+
+Fast Computation of ROC Curve in R
+
+```{r}
+n <- 10^3
+pred.x <- rnorm(n)
+true.x <- runif(n) < 1 / (1 + exp(-pred.x))
+
+suppressPackageStartupMessages({
+  library(microbenchmark)
+  library(ROCR)
+  library(FastROC)
+  library(pROC)
+})
+
+f.ROCR <- function() {
+  pred <- prediction(pred.x, true.x)
+  perf <- performance(pred, "auc")
+  perf@y.values[[1]]
+}
+
+f.FastROC <- function() {
+  roc <- FastROC::ROC(true.x, pred.x)  
+  auc.RScupio <- FastROC::AUC(roc$x, roc$y)
+}
+
+f.pROC <- function() {
+  g <- pROC::roc(true.x, pred.x)
+  auc.pROC <- auc(g)
+}
+
+microbenchmark(
+  auc.ROCR <- f.ROCR(),
+  auc.FastROC <- f.FastROC(),
+  auc.pROC <- f.pROC()
+  )
+
+all.equal(auc.ROCR, auc.FastROC)
+all.equal(auc.pROC[1], auc.FastROC)
+```
