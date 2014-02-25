@@ -8,8 +8,8 @@
 ROC <- function(y.true, y.estimate, resize = NULL) {
   y.true <- as.integer(!y.true)
   y.estimate <- as.numeric(y.estimate)
-  if (is.null(resize)) return(.Call("ROC", y.true, y.estimate))
-  retval <- .Call("ROC", y.true, y.estimate)
+  if (is.null(resize)) return(.Call("ROC_core", y.true, y.estimate))
+  retval <- .Call("ROC_core", y.true, y.estimate)
   index <- floor(seq(from = 1, to = length(retval$x), length = resize))
   list(x=retval$x[index], y=retval$y[index])
 }

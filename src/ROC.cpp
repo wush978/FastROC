@@ -11,8 +11,8 @@ public:
   }
 };
 
-//[[Rcpp::export]]
-SEXP ROC(SEXP Ranswer, SEXP Restimate) {
+RcppExport SEXP ROC_core(SEXP Ranswer, SEXP Restimate) {
+  BEGIN_RCPP
   IntegerVector answer(Ranswer);
   NumericVector estimate(Restimate);
   if (answer.size() != estimate.size()) throw std::invalid_argument("");
@@ -40,4 +40,5 @@ SEXP ROC(SEXP Ranswer, SEXP Restimate) {
   retval["x"] = retval_x;
   retval["y"] = retval_y;
   return retval;
+  END_RCPP
 }
