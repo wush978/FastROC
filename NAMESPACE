@@ -1,3 +1,4 @@
 export(AUC)
 export(ROC)
+importFrom(Rcpp)
 useDynLib(FastROC)
