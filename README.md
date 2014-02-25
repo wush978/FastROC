@@ -14,6 +14,7 @@ suppressPackageStartupMessages({
     library(ROCR)
     library(FastROC)
     library(pROC)
+    library(caTools)
 })
 
 f.ROCR <- function() {
@@ -32,15 +33,21 @@ f.pROC <- function() {
     auc.pROC <- auc(g)
 }
 
-microbenchmark(auc.ROCR <- f.ROCR(), auc.FastROC <- f.FastROC(), auc.pROC <- f.pROC())
+f.caTools <- function() {
+    colAUC(pred.x, true.x)[1]
+}
+
+microbenchmark(auc.ROCR <- f.ROCR(), auc.FastROC <- f.FastROC(), auc.pROC <- f.pROC(), 
+    auc.caTools <- f.caTools())
 ```
 
 ```
 ## Unit: microseconds
 ##                        expr     min      lq  median      uq   max neval
-##        auc.ROCR <- f.ROCR()  5126.0  6221.9  7332.0  9148.2 12764   100
-##  auc.FastROC <- f.FastROC()   331.1   444.2   500.3   599.6  2390   100
-##        auc.pROC <- f.pROC() 19774.7 25487.6 29021.3 33600.9 73644   100
+##        auc.ROCR <- f.ROCR()  5264.6  6116.8  6766.5  8374.7 13121   100
+##  auc.FastROC <- f.FastROC()   334.9   420.6   475.6   550.5  2417   100
+##        auc.pROC <- f.pROC() 23141.6 25761.0 28522.7 31067.3 75321   100
+##  auc.caTools <- f.caTools()  1215.3  1558.0  1818.9  2044.0  5002   100
 ```
 
 ```r
@@ -54,6 +61,14 @@ all.equal(auc.ROCR, auc.FastROC)
 
 ```r
 all.equal(auc.pROC[1], auc.FastROC)
+```
+
+```
+## [1] TRUE
+```
+
+```r
+all.equal(auc.caTools, auc.FastROC)
 ```
 
 ```
