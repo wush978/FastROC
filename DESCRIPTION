@@ -10,3 +10,7 @@ License: GPL(>= 3)
 Depends:
     Rcpp (>= 0.10.6)
 LinkingTo: Rcpp
+Collate:
+    'AUC.R'
+    'FastROC.R'
+    'ROC.R'
