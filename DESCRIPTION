@@ -7,6 +7,7 @@ Author: Wush Wu <wush978@gmail.com>
 Maintainer: Wush Wu <wush978@gmail.com>
 Description: For the benchmark, please see https://github.com/wush978/FastROC
 License: GPL(>= 3)
+BugReports: https://github.com/wush978/FastROC/issues
 Depends:
     Rcpp (>= 0.10.6)
 LinkingTo: Rcpp
