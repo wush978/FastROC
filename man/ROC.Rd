@@ -2,7 +2,7 @@
 \alias{ROC}
 \title{Fast Computation of the Receiver Operating Characteristic Curve (ROC)}
 \usage{
-ROC(y.true, y.estimate, resize = NULL)
+  ROC(y.true, y.estimate, resize = NULL)
 }
 \arguments{
   \item{y.true}{logical vector. The answer of the
@@ -17,11 +17,18 @@ ROC(y.true, y.estimate, resize = NULL)
   down sampled to \code{resize}.}
 }
 \value{
-\code{list(x, y)}. The x-coordinate and y-coordinate of the
-ROC curve.
+  \code{list(x, y)}. The x-coordinate and y-coordinate of
+  the ROC curve.
 }
 \description{
-Fast Computation of the Receiver Operating Characteristic
-Curve (ROC)
+  Fast Computation of the Receiver Operating Characteristic
+  Curve (ROC)
+}
+\examples{
+n <- 10^5
+pred.x <- rnorm(n)
+true.x <- runif(n) < 1 / (1 + exp(-pred.x))
+roc <- ROC(true.x, pred.x)
+auc <- AUC(roc$x, roc$y)
 }
 
