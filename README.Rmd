@@ -46,4 +46,34 @@ microbenchmark(
 all.equal(auc.ROCR, auc.FastROC)
 all.equal(auc.pROC[1], auc.FastROC)
 all.equal(auc.caTools, auc.FastROC)
+
+n <- 10^4
+pred.x <- rnorm(n)
+true.x <- runif(n) < 1 / (1 + exp(-pred.x))
+
+microbenchmark(times=10,
+  auc.ROCR <- f.ROCR(),
+  auc.FastROC <- f.FastROC(),
+  auc.pROC <- f.pROC(),
+  auc.caTools <- f.caTools()
+  )
+
+n <- 10^5
+pred.x <- rnorm(n)
+true.x <- runif(n) < 1 / (1 + exp(-pred.x))
+
+microbenchmark(times = 10,
+  auc.ROCR <- f.ROCR(),
+  auc.FastROC <- f.FastROC(),
+  auc.caTools <- f.caTools()
+  )
+print(auc.ROCR)
+print(auc.FastROC)
+print(auc.caTools)
+
+n <- 10^7
+pred.x <- rnorm(n)
+true.x <- runif(n) < 1 / (1 + exp(-pred.x))
+print(system.time(auc.ROCR <- f.ROCR()))
+print(system.time(auc.FastROC <- f.FastROC()))
 ```
