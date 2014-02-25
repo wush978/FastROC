@@ -13,6 +13,7 @@ suppressPackageStartupMessages({
   library(ROCR)
   library(FastROC)
   library(pROC)
+  library(caTools)
 })
 
 f.ROCR <- function() {
@@ -31,12 +32,18 @@ f.pROC <- function() {
   auc.pROC <- auc(g)
 }
 
+f.caTools <- function() {
+  colAUC(pred.x, true.x)[1]
+}
+
 microbenchmark(
   auc.ROCR <- f.ROCR(),
   auc.FastROC <- f.FastROC(),
-  auc.pROC <- f.pROC()
+  auc.pROC <- f.pROC(),
+  auc.caTools <- f.caTools()
   )
 
 all.equal(auc.ROCR, auc.FastROC)
 all.equal(auc.pROC[1], auc.FastROC)
+all.equal(auc.caTools, auc.FastROC)
 ```

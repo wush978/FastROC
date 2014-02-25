@@ -38,9 +38,9 @@ microbenchmark(auc.ROCR <- f.ROCR(), auc.FastROC <- f.FastROC(), auc.pROC <- f.p
 ```
 ## Unit: microseconds
 ##                        expr     min      lq  median      uq   max neval
-##        auc.ROCR <- f.ROCR()  5607.4  5754.0  5988.9  7104.0 35115   100
-##  auc.FastROC <- f.FastROC()   370.1   437.2   480.8   523.6  1564   100
-##        auc.pROC <- f.pROC() 18607.8 19713.7 20156.0 21208.3 49445   100
+##        auc.ROCR <- f.ROCR()  5126.0  6221.9  7332.0  9148.2 12764   100
+##  auc.FastROC <- f.FastROC()   331.1   444.2   500.3   599.6  2390   100
+##        auc.pROC <- f.pROC() 19774.7 25487.6 29021.3 33600.9 73644   100
 ```
 
 ```r
