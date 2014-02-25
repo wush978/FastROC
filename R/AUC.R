@@ -7,7 +7,7 @@
 #'n <- 10^5
 #'pred.x <- rnorm(n)
 #'true.x <- runif(n) < 1 / (1 + exp(-pred.x))
-#'roc <- ROC(pred.x, true.x)
+#'roc <- ROC(true.x, pred.x)
 #'auc <- AUC(roc$x, roc$y)
 #'@export
 AUC <- function(x, y) {
