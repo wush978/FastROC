@@ -2,7 +2,7 @@
 \alias{ROC}
 \title{Fast Computation of the Receiver Operating Characteristic Curve (ROC)}
 \usage{
-ROC(Ranswer, Restimate)
+ROC(y.true, y.estimate, resize = NULL)
 }
 \arguments{
   \item{y.true}{logical vector. The answer of the
