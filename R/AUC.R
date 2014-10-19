@@ -9,6 +9,7 @@
 #'true.x <- runif(n) < 1 / (1 + exp(-pred.x))
 #'roc <- ROC(true.x, pred.x)
 #'auc <- AUC(roc$x, roc$y)
+#'@importFrom stats filter
 #'@export
 AUC <- function(x, y) {
   sum(diff(x) * filter(y, c(0.5, 0.5))[-length(y)])
