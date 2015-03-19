@@ -1,7 +1,7 @@
 Package: FastROC
 Type: Package
 Title: Fast computation of ROC
-Version: 0.1
+Version: 0.1.1
 Date: 2014-02-25
 Author: Wush Wu <wush978@gmail.com>
 Maintainer: Wush Wu <wush978@gmail.com>
