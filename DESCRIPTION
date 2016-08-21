@@ -1,7 +1,7 @@
 Package: FastROC
 Type: Package
 Title: Fast computation of ROC
-Version: 0.1
+Version: 0.2
 Date: 2014-02-25
 Author: Wush Wu <wush978@gmail.com>
 Maintainer: Wush Wu <wush978@gmail.com>
@@ -11,9 +11,11 @@ Description: This package computes receiver operating characteristic (ROC)
     https://github.com/wush978/FastROC
 License: GPL(>= 3)
 BugReports: https://github.com/wush978/FastROC/issues
-Imports: Rcpp (>= 0.10.6)
+Imports:
+    Rcpp (>= 0.10.6)
 LinkingTo: Rcpp
 Collate:
     'AUC.R'
     'FastROC.R'
     'ROC.R'
+RoxygenNote: 5.0.1

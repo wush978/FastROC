@@ -14,3 +14,12 @@
 AUC <- function(x, y) {
   sum(diff(x) * filter(y, c(0.5, 0.5))[-length(y)])
 }
+
+#'@param y.true logical vector. The answer of the classification problem.
+#'@param y.estimate numeric vector. The ranking of the predicted result corresponding to \code{Ranswer}.
+#'@param resize integer vector or \code{NULL}(default). If \code{is.null(resize)}, the complete ROC curve is returned.
+#'@export
+AUC2 <- function(y.true, y.estimate, resize = NULL) {
+  roc <- ROC(y.true, y.estimate, resize)
+  AUC(roc$x, roc$y)
+}
