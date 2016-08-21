@@ -12,7 +12,7 @@
 #'@importFrom stats filter
 #'@export
 AUC <- function(x, y) {
-  sum(diff(x) * filter(y, c(0.5, 0.5))[-length(y)])
+  sum(diff(x) * stats::filter(y, c(0.5, 0.5))[-length(y)])
 }
 
 #'@param y.true logical vector. The answer of the classification problem.
